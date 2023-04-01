@@ -5,9 +5,24 @@ import "./style/global.css"
 
 function App() {
   const [studentName, setStudentName] = useState()
+  const [students, setStudents] = useState([])
+
+  function handleAddStudent(){
+    const newStudent = {
+      name: studentName,
+      time: new Date().toLocaleTimeString("pt-br", {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      })
+    }
+
+    setStudents(prevState =>[...prevState, newStudent])
+  }
+
   return (
     <div className="flex items-center flex-col">
-      <h1 className="m-20 mb-6 font-bold text-2xl" >Name: {studentName}</h1>
+      <h1 className="m-20 mb-6 font-bold text-2xl" >List of Attendance</h1>
       <input 
         className="w-1/2 p-6 bg-slate-300 rounded border-0 text-base" 
         type="text" 
@@ -17,9 +32,13 @@ function App() {
       <button 
         className="w-1/2 p-6 font-bold bg-red-400 text-white rounded mt-3 mb-20 hover:bg-red-500 transition duration-200 ease-in-out text-base" 
         type="button"
-      >Add</button>
-      <Card name="Gael" time="10:55:25" />
-      <Card name="Camile" time="12:35:15" />
+        onClick={handleAddStudent}
+      >
+      Add</button>
+      {
+        students.map(student => <Card name={student.name} time={student.time} />)
+        
+      }
     </div>
   )
 }
