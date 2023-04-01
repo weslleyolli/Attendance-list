@@ -10,7 +10,8 @@ function App() {
         className="w-1/2 p-6 font-bold bg-red-400 text-white rounded mt-3 mb-20 hover:bg-red-500 transition duration-200 ease-in-out text-base" 
         type="button"
       >Add</button>
-      <Card />
+      <Card name="Gael" time="10:55:25" />
+      <Card name="Camile" time="12:35:15" />
     </div>
   )
 }
