@@ -11,8 +11,6 @@ function App() {
         type="button"
       >Add</button>
       <Card />
-      <Card />
-      <Card />
     </div>
   )
 }
