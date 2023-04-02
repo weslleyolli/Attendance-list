@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 
 import { Card } from "./components/Card"
 import "./style/global.css"
@@ -22,7 +22,13 @@ function App() {
 
   return (
     <div className="flex items-center flex-col">
-      <h1 className="m-20 mb-6 font-bold text-2xl" >List of Attendance</h1>
+      <header className="m-20 mb-6 w-1/2 flex justify-between items-center">
+      <h1 className="font-bold text-2xl" >List of Attendance</h1>
+      <div className="flex items-center">
+        <strong>Weslley</strong>
+        <img className="w-14 h-14 rounded-full ml-2" src="https://github.com/weslleyolli.png" alt="Photo of perfil" />
+      </div>
+      </header>
       <input 
         className="w-1/2 p-6 bg-slate-300 rounded border-0 text-base" 
         type="text" 
