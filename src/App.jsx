@@ -20,6 +20,9 @@ function App() {
     setStudents(prevState =>[...prevState, newStudent])
   }
 
+  useEffect(() => {
+    console.log("useEffect was called")
+  }, [])
   return (
     <div className="flex items-center flex-col">
       <header className="m-20 mb-6 w-1/2 flex justify-between items-center">
