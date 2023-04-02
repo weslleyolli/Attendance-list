@@ -22,14 +22,16 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('https://api.github.com/users/weslleyolli')
-      .then(response => response.json())
-      .then(data => {
-        setUser({
-          name: data.name,
-          avatar: data.avatar_url
-        })
+    async function fetchData() {
+      const response = await fetch('https://api.github.com/users/weslleyolli')
+      const data =  await response.json();
+      setUser({
+        name: data.name,
+        avatar: data.avatar_url
       })
+    }
+
+    fetchData()
   }, [])
   return (
     <div className="flex items-center flex-col">
