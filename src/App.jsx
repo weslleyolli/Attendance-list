@@ -6,6 +6,7 @@ import "./style/global.css"
 function App() {
   const [studentName, setStudentName] = useState()
   const [students, setStudents] = useState([])
+  const [user, setUser] = useState({ name: '', avatar: ''})
 
   function handleAddStudent(){
     const newStudent = {
@@ -21,15 +22,22 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("useEffect was called")
+    fetch('https://api.github.com/users/weslleyolli')
+      .then(response => response.json())
+      .then(data => {
+        setUser({
+          name: data.name,
+          avatar: data.avatar_url
+        })
+      })
   }, [])
   return (
     <div className="flex items-center flex-col">
       <header className="m-20 mb-6 w-1/2 flex justify-between items-center">
       <h1 className="font-bold text-2xl" >List of Attendance</h1>
       <div className="flex items-center">
-        <strong>Weslley</strong>
-        <img className="w-14 h-14 rounded-full ml-2" src="https://github.com/weslleyolli.png" alt="Photo of perfil" />
+        <strong>{user.name}</strong>
+        <img className="w-14 h-14 rounded-full ml-2" src={user.avatar} alt="Photo of perfil" />
       </div>
       </header>
       <input 
